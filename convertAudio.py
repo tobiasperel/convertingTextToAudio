@@ -2,10 +2,12 @@ import PyPDF2
 from gtts import gTTS
 import os
 
-# Ruta del archivo PDF
-pdf_path = "E:\Programacion\Python\convertingTextToAudio\libro.pdf"
+# rute of the pdf file
+pdf_path = "" # here goes the path of the pdf file
+output_audio_path = "" #here goes the path of the output audio file
 
-# Leer el contenido del PDF
+
+# read the pdf file and extract the text
 def extract_text_from_pdf(pdf_path):
     text = ""
     with open(pdf_path, "rb") as pdf_file:
@@ -19,17 +21,15 @@ def clear_text(text):
     text = text.replace("_", "")
     return text
 
-# Nombre y ruta para el archivo de audio de salida
-output_audio_path = "E:\Programacion\Python\convertingTextToAudio\exit.mp3"
 
-# Extraer texto del PDF
+# extract the text
 pdf_text = extract_text_from_pdf(pdf_path)
 
-# Limpiar el texto extraído
+# clear the text
 pdf_text = clear_text(pdf_text)
 print(pdf_text)
 
-# Generar audio a partir del texto extraído
+# generate the audio
 tts = gTTS(text=pdf_text, lang="es")
 tts.save(output_audio_path)
 
